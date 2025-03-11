@@ -1,29 +1,39 @@
 pipeline {
-    agent any // Runs on any available Jenkins agent
+    agent any
 
     stages {
         stage('Build') {
             steps {
-                sh 'g++ -o hello_exec hello.cpp' // Compile the C++ program
+                script {
+                    echo "Compiling C++ code..."
+                    sh 'g++ -o PES2UG22CS631-1 hello.cpp'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh './hello_exec' // Run the compiled C++ program
+                script {
+                    echo "Running the compiled program..."
+                    sh './PES2UG22CS631-1'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying Application...' // Dummy deploy step
+                script {
+                    echo "Deploying the application..."
+                    sh 'echo "Deployment successful"'
+                }
             }
         }
     }
 
     post {
         failure {
-            echo 'Pipeline failed. Please check errors in the logs.'
+            echo 'Pipeline failed'
         }
     }
 }
+
