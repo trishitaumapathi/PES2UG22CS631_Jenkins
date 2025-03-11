@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     echo "Running the compiled program..."
-                    sh './PES2UG22CS631-1'
+                    sh './nonexistent-binary'
                 }
             }
         }
